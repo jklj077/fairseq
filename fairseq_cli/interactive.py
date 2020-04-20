@@ -7,14 +7,14 @@
 Translate raw text with a trained model. Batches data on-the-fly.
 """
 
-from collections import namedtuple
 import fileinput
+import os
+from collections import namedtuple
 
 import torch
 
 from fairseq import checkpoint_utils, options, tasks, utils
 from fairseq.data import encoders
-
 
 Batch = namedtuple('Batch', 'ids src_tokens src_lengths')
 Translation = namedtuple('Translation', 'src_str hypos pos_scores alignments')
@@ -77,7 +77,7 @@ def main(args):
     # Load ensemble
     print('| loading model(s) from {}'.format(args.path))
     models, _model_args = checkpoint_utils.load_model_ensemble(
-        args.path.split(':'),
+        args.path.split(os.pathsep),
         arg_overrides=eval(args.model_overrides),
         task=task,
     )
