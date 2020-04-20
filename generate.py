@@ -3,10 +3,6 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-"""
-Translate pre-processed data with a trained model.
-"""
-
 from fairseq_cli.generate import cli_main
 
 
