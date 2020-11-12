@@ -60,7 +60,7 @@ def safe_round(number, ndigits):
     elif np is not None and np.ndim(number) == 0 and hasattr(number, "item"):
         return safe_round(number.item(), ndigits)
     else:
-        return numbe
+        return number
 
 
 class AverageMeter(Meter):
